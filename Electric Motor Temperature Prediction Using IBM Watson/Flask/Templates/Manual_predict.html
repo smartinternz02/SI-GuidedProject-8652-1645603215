@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>
+	Prediction
+</title>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<style>
+		* {
+			box-sizing: border-box;
+		}
+		
+		body {
+			font-family: 'Montserrat' ;
+		}
+		
+		.header {	
+			top:0;	
+			margin:0px;
+			left: 0px;
+			right: 0px;
+			position: fixed;
+			background-color: black;
+			color: white;
+			box-shadow: 0px 8px 4px grey;
+			overflow: hidden;
+			padding: 15px;
+			font-size: 2vw;
+			width: 100%;
+			text-align: left;
+			padding-left: 100px;
+			opacity:0.9;
+		}
+		.header_text{
+			font-size:40px;
+			text-align:center;
+		}
+		.content{
+		margin-top:100px;
+		}
+		.text{
+			font-size:20px;
+			margin-top:10px;
+			text-align:center;
+		}
+		input[type=number], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 50%;
+  background-color: #000000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #5d6568;
+  color:#ffffff;	
+  border-color:black;
+}
+form{
+margin-top:20px;
+}
+.result{
+color:black;
+margin-top:30px;
+margin-bottom:20px;
+font-size:25px;
+color:red;
+}
+</style>	
+</head>
+<body align=center>
+<div class="header">
+		<div>Electric Motor Temperature</div>
+</div>
+<div class="content">
+<div class="header_text">Electric Motor Temperature Prediction</div>
+<div class="text">Fill in and below details to know predicted Permanent Magnet surface temperature representing the rotor temperature.</div>
+<div class="result">
+  {{ prediction_text }}
+  </div>
+<form action="{{ url_for('y_predict') }}" method="POST">
+    <input type="number" step="any" min="-5" max="5" id="Ambient temperature" name="Ambient temperature" placeholder="Ambient temperature">
+    <input type="number" step="any" min="-5" max="5" id="Coolant temperature" name="Coolant temperature" placeholder="Coolant temperature">
+	<input type="number" step="any" min="-5" max="5" id="Voltage d-component" name="Voltage d-component" placeholder="Voltage d-component">
+	<input type="number" step="any" min="-5" max="5" id="Voltage q-component" name="Voltage q-component" placeholder="Voltage q-component">
+    <input type="number" step="any" min="-5" max="5" id="Motor speed" name="Motor speed" placeholder="Motor speed">
+	<input type="number" step="any" min="-5" max="5" id="Current d-component" name="Current d-component" placeholder="Current d-component">
+    <input type="number" step="any" min="-5" max="5" id="Current q-component" name="Current q-component" placeholder="Current q-component">
+
+    <input type="submit" value="Submit">
+  </form>
+  
+</div>
+</body>
+</html>
